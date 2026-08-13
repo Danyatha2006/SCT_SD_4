@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProductScope — Product Intelligence</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor-glow"></div>
+
+  <aside class="sidebar">
+    <a class="brand" href="#"><span>PS</span><b>PRODUCT<br> SCOPE</b></a>
+    <div class="rail"></div>
+    <button class="nav active" data-target="workspace"><i>⌁</i><span>Workspace</span></button>
+    <button class="nav" data-target="records"><i>▦</i><span>Records</span></button>
+    <button class="nav" data-target="about"><i>✦</i><span>About</span></button>
+    <div class="side-bottom">
+      <span class="live-dot"></span><small>LOCAL ENGINE<br>READY</small>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div class="crumb">TASK 04 <span>/</span> PRODUCT DATA EXTRACTION</div>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
+        <div class="profile">3Y <span>STUDENT BUILD</span></div>
+      </div>
+    </header>
+
+    <section class="intro" id="workspace">
+      <div>
+        <p class="eyebrow">ECOMMERCE INTELLIGENCE <b>●</b> 2026</p>
+        <h1>Products,<br><em>decoded.</em></h1>
+      </div>
+      <p class="intro-copy">A software development project that collects structured product information from a permitted public e-commerce page, cleans the results, and exports them as a CSV dataset.</p>
+    </section>
+
+    <section class="command-grid">
+      <article class="command-card">
+        <div class="card-top">
+          <span class="step-number">01 — INPUT</span>
+          <span id="engineState" class="engine-state">WAITING</span>
+        </div>
+        <h2>Give the engine<br>a public page.</h2>
+        <div class="url-box">
+          <span>↗</span>
+          <input id="urlInput" type="url" placeholder="https://store.example/products" autocomplete="off">
+          <button id="scanBtn">ANALYZE <b>→</b></button>
+        </div>
+        <div class="hint-row">
+          <span>SUPPORTED: PUBLIC HTML + JSON-LD PRODUCT DATA</span>
+          <span id="timer">00:00</span>
+        </div>
+      </article>
+
+      <article class="process-card">
+        <span class="step-number">02 — PIPELINE</span>
+        <div class="orbit"><span></span><span></span><span></span><strong id="processNumber">0%</strong></div>
+        <div class="pipeline-list">
+          <div class="pipe active"><b>01</b><span>FETCH</span><i>READY</i></div>
+          <div class="pipe"><b>02</b><span>EXTRACT</span><i>—</i></div>
+          <div class="pipe"><b>03</b><span>NORMALIZE</span><i>—</i></div>
+          <div class="pipe"><b>04</b><span>CSV</span><i>—</i></div>
+        </div>
+      </article>
+
+      <article class="signal-card">
+        <span class="step-number">LIVE SIGNAL</span>
+        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="signal-copy"><strong id="signalText">ENGINE STANDING BY</strong><span>READY FOR COLLECTION</span></div>
+      </article>
+    </section>
+
+    <section class="stat-strip">
+      <div><span>RECORDS</span><strong id="recordCount">000</strong></div>
+      <div><span>AVG PRICE</span><strong id="avgPrice">—</strong></div>
+      <div><span>AVG RATING</span><strong id="avgRating">—</strong></div>
+      <div><span>SOURCE</span><strong id="sourceName">—</strong></div>
+    </section>
+
+    <section class="records-section" id="records">
+      <div class="section-heading">
+        <div><span class="eyebrow">03 — OUTPUT DATASET</span><h2>Collected records <b id="countBadge">0</b></h2></div>
+        <div class="table-tools">
+          <label class="search"><span>⌕</span><input id="searchInput" placeholder="Filter products"></label>
+          <select id="sortSelect">
+            <option value="default">ORDER: DEFAULT</option>
+            <option value="priceAsc">PRICE: LOW → HIGH</option>
+            <option value="priceDesc">PRICE: HIGH → LOW</option>
+            <option value="ratingDesc">RATING: HIGH → LOW</option>
+          </select>
+          <button id="exportBtn" disabled>EXPORT CSV ↓</button>
+        </div>
+      </div>
+
+      <div class="table-shell">
+        <table>
+          <thead><tr><th>NO.</th><th>PRODUCT</th><th>PRICE</th><th>RATING</th><th>EXTRACTION</th><th>PRODUCT LINK</th></tr></thead>
+          <tbody id="tableBody">
+            <tr class="empty-row"><td colspan="6"><div class="empty-mark">✦</div><b>No dataset yet.</b><span>Run an analysis to populate this workspace.</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <span class="eyebrow">PROJECT ARCHITECTURE</span>
+      <div class="architecture">
+        <div><b>01</b><h3>Collection</h3><p>Python requests retrieves a permitted public page.</p></div>
+        <div><b>02</b><h3>Extraction</h3><p>BeautifulSoup checks JSON-LD first, then common product HTML structures.</p></div>
+        <div><b>03</b><h3>Normalization</h3><p>Names, prices and ratings are cleaned into structured records.</p></div>
+        <div><b>04</b><h3>Export</h3><p>The collected dataset is saved and delivered as a CSV file.</p></div>
+      </div>
+    </section>
+
+    <footer>PRODUCTSCOPE <span>•</span> SOFTWARE DEVELOPMENT TASK 04 <small>BUILD / COLLECT / NORMALIZE / EXPORT</small></footer>
+  </main>
+
+  <div id="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
